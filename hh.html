@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Sharma - Crypto & Web3 Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #5b73ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%2300d4ff" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #00d4ff, #5b73ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Floating Elements */
+        .floating-crypto {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(91, 115, 255, 0.1));
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            display: block;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(91, 115, 255, 0.05));
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .skill-category h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #5b73ff;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 115, 255, 0.08));
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .project-card h3 {
+            color: #00d4ff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            color: #5b73ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #00d4ff;
+        }
+
+        /* Goals Section */
+        .goals {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(91, 115, 255, 0.05));
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .goal-amount {
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #5b73ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
+
+        .goal-timeline {
+            font-size: 1.3rem;
+            color: #00d4ff;
+            margin-bottom: 30px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 115, 255, 0.08));
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: #00d4ff;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .goal-amount {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Sahil Sharma</h1>
+                <h2 class="hero-subtitle">Crypto & Web3 Developer</h2>
+                <p class="hero-description">Building the future of decentralized finance and blockchain technology. Specialized in smart contracts, DeFi protocols, and innovative crypto solutions.</p>
+                <a href="#contact" class="cta-button">Let's Build Together</a>
+            </div>
+        </div>
+        <!-- Floating Crypto Symbols -->
+        <div class="floating-crypto" style="top: 20%; left: 10%;">₿</div>
+        <div class="floating-crypto" style="top: 60%; right: 15%;">Ξ</div>
+        <div class="floating-crypto" style="bottom: 30%; left: 20%;">◊</div>
+        <div class="floating-crypto" style="top: 40%; right: 25%;">⟐</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p>I'm a passionate crypto and Web3 developer with a vision to revolutionize the financial landscape through blockchain technology. With expertise in smart contract development, DeFi protocols, and cryptocurrency trading systems, I help businesses and individuals navigate the exciting world of decentralized finance.</p>
+                    <p>My goal is ambitious but achievable: earn $10,000 in the next 3-4 months by delivering high-quality blockchain solutions, consulting services, and innovative crypto projects. I believe in the transformative power of Web3 and am committed to being at the forefront of this technological revolution.</p>
+                </div>
+                <div class="stats fade-in">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Smart Contracts</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">DeFi Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Blockchain Development</h3>
+                    <ul class="skill-list">
+                        <li>Solidity Smart Contracts</li>
+                        <li>Ethereum & EVM Chains</li>
+                        <li>Web3.js & Ethers.js</li>
+                        <li>Hardhat & Truffle</li>
+                        <li>IPFS Integration</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>DeFi & Protocols</h3>
+                    <ul class="skill-list">
+                        <li>Automated Market Makers</li>
+                        <li>Yield Farming Protocols</li>
+                        <li>Lending & Borrowing</li>
+                        <li>Governance Tokens</li>
+                        <li>Cross-chain Bridges</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Frontend & Integration</h3>
+                    <ul class="skill-list">
+                        <li>React.js & Next.js</li>
+                        <li>TypeScript</li>
+                        <li>Wallet Integration</li>
+                        <li>MetaMask & WalletConnect</li>
+                        <li>Responsive Web Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Trading & Analytics</h3>
+                    <ul class="skill-list">
+                        <li>Algorithmic Trading Bots</li>
+                        <li>Market Analysis</li>
+                        <li>Risk Management</li>
+                        <li>Portfolio Optimization</li>
+                        <li>Technical Indicators</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <h3>DeFi Yield Aggregator</h3>
+                    <p>Built a comprehensive yield farming platform that automatically optimizes returns across multiple DeFi protocols. Features include auto-compounding, risk assessment, and portfolio rebalancing.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Solidity</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Web3.js</span>
+                        <span class="tech-tag">Chainlink</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <h3>NFT Marketplace</h3>
+                    <p>Developed a gas-efficient NFT marketplace with lazy minting, royalty distribution, and advanced filtering. Integrated with multiple wallets and supports batch operations.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Solidity</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">IPFS</span>
+                        <span class="tech-tag">OpenZeppelin</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <h3>Crypto Trading Bot</h3>
+                    <p>Created an intelligent trading bot using machine learning algorithms for pattern recognition and automated execution across multiple exchanges with advanced risk management.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">WebSocket</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Demo Video</a>
+                        <a href="#" class="project-link">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="goals">
+        <div class="container">
+            <h2 class="section-title fade-in">My Goal</h2>
+            <div class="fade-in">
+                <div class="goal-amount">$10,000</div>
+                <div class="goal-timeline">Target: Next 3-4 Months</div>
+                <p style="max-width: 600px; margin: 0 auto; font-size: 1.1rem; opacity: 0.9;">Through strategic partnerships, innovative projects, and premium consulting services in the crypto and Web3 space, I'm committed to achieving this milestone while delivering exceptional value to clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Connect</h2>
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:sahil.crypto@email.com">sahil.crypto@email.com</a>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="#">/in/sahil-sharma-crypto</a>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">🐱</div>
+                    <h3>GitHub</h3>
+                    <a href="#">/sahil-web3-dev</a>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">🐦</div>
+                    <h3>Twitter</h3>
+                    <a href="#">@sahil_crypto_dev</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sahil Sharma. Building the future of Web3, one block at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hero animations
+            anime.timeline()
+                .add({
+                    targets: '.hero-title',
+                    translateY: [50, 0],
+                    opacity: [0, 1],
+                    duration: 1000,
+                    easing: 'easeOutExpo'
+                })
+                .add({
+                    targets: '.hero-subtitle',
+                    translateY: [30, 0],
+                    opacity: [0, 1],
+                    duration: 800,
+                    easing: 'easeOutExpo'
+                }, '-=500')
+                .add({
+                    targets: '.hero-description',
+                    translateY: [30, 0],
+                    opacity: [0, 1],
+                    duration: 800,
+                    easing: 'easeOutExpo'
+                }, '-=400')
+                .add({
+                    targets: '.cta-button',
+                    translateY: [30, 0],
+                    opacity: [0, 1],
+                    duration: 600,
+                    easing: 'easeOutExpo'
+                }, '-=300');
+
+            // Floating crypto symbols animation
+            anime({
+                targets: '.floating-crypto',
+                translateY: [-20, 20],
+                opacity: [0.3, 0.8, 0.3],
+                duration: 4000,
+                direction: 'alternate',
+                loop: true,
+                easing: 'easeInOutSine',
+                delay: function(el, i) {
+                    return i * 500;
+                }
+            });
+
+            // Scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        
+                        // Animate based on element type
+                        if (element.classList.contains('section-title')) {
+                            anime({
+                                targets: element,
+                                translateY: [50, 0],
+                                opacity: [0, 1],
+                                duration: 1000,
+                                easing: 'easeOutExpo'
+                            });
+                        } else if (element.classList.contains('stat-item')) {
+                            anime({
+                                targets: element,
+                                scale: [0.8, 1],
+                                opacity: [0, 1],
+                                duration: 600,
+                                easing: 'easeOutBack',
+                                delay: Array.from(element.parentElement.children).indexOf(element) * 100
+                            });
+                            
+                            // Animate the numbers
+                            const numberElement = element.querySelector('.stat-number');
+                            if (numberElement) {
+                                const finalNumber = numberElement.textContent;
+                                if (finalNumber.includes('+')) {
+                                    const number = parseInt(finalNumber);
+                                    anime({
+                                        targets: {value: 0},
+                                        value: number,
+                                        duration: 2000,
+                                        round: 1,
+                                        easing: 'easeOutExpo',
+                                        update: function(anim) {
+                                            numberElement.textContent = anim.animatables[0].target.value + '+';
+                                        }
+                                    });
+                                } else if (finalNumber.includes('%')) {
+                                    const number = parseInt(finalNumber);
+                                    anime({
+                                        targets: {value: 0},
+                                        value: number,
+                                        duration: 2000,
+                                        round: 1,
+                                        easing: 'easeOutExpo',
+                                        update: function(anim) {
+                                            numberElement.textContent = anim.animatables[0].target.value + '%';
+                                        }
+                                    });
+                                }
+                            }
+                        } else if (element.classList.contains('skill-category')) {
+                            anime({
+                                targets: element,
+                                translateY: [30, 0],
+                                opacity: [0, 1],
+                                duration: 800,
+                                easing: 'easeOutExpo',
+                                delay: Array.from(element.parentElement.children).indexOf(element) * 100
+                            });
+                        } else if (element.classList.contains('project-card')) {
+                            anime({
+                                targets: element,
+                                translateY: [40, 0],
+                                opacity: [0, 1],
+                                duration: 1000,
+                                easing: 'easeOutExpo',
+                                delay: Array.from(element.parentElement.children).indexOf(element) * 150
+                            });
+                        } else if (element.classList.contains('contact-item')) {
+                            anime({
+                                targets: element,
+                                scale: [0.9, 1],
+                                opacity: [0, 1],
+                                duration: 600,
+                                easing: 'easeOutBack',
+                                delay: Array.from(element.parentElement.children).indexOf(element) * 100
+                            });
+                        } else {
+                            anime({
+                                targets: element,
+                                translateY: [30, 0],
+                                opacity: [0, 1],
+                                duration: 800,
+                                easing: 'easeOutExpo'
+                            });
+                        }
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.nav-links a, .cta-button').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Goal amount animation
+            const goalObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: '.goal-amount',
+                            scale: [0.5, 1],
+                            opacity: [0, 1],
+                            duration: 1200,
+                            easing: 'easeOutBack'
+                        });
+                        goalObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            const goalSection = document.querySelector('.goals');
+            if (goalSection) {
+                goalObserver.observe(goalSection);
+            }
+
+            // Project card hover effects
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    anime({
+                        targets: this.querySelector('h3'),
+                        color: '#5b73ff',
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    anime({
+                        targets: this.querySelector('h3'),
+                        color: '#00d4ff',
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+            });
+
+            // Add parallax effect to hero background
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const heroBackground = document.querySelector('.hero-bg');
+                if (heroBackground) {
+                    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                
+                // Animate floating crypto symbols based on scroll
+                document.querySelectorAll('.floating-crypto').forEach((symbol, index) => {
+                    const speed = (index + 1) * 0.1;
+                    symbol.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+                });
+            });
+
+            // Add typing effect to hero title
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                heroTitle.textContent = '';
+                
+                setTimeout(() => {
+                    let i = 0;
+                    const typeWriter = setInterval(() => {
+                        if (i < originalText.length) {
+                            heroTitle.textContent += originalText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(typeWriter);
+                        }
+                    }, 100);
+                }, 1000);
+            }
+
+            // Add glitch effect on hover for logo
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.addEventListener('mouseenter', function() {
+                    anime({
+                        targets: this,
+                        translateX: [0, -2, 2, 0],
+                        duration: 200,
+                        easing: 'easeInOutQuad',
+                        complete: () => {
+                            anime({
+                                targets: this,
+                                translateX: [0, 1, -1, 0],
+                                duration: 100,
+                                easing: 'easeInOutQuad'
+                            });
+                        }
+                    });
+                });
+            }
+
+            // Add pulse animation to CTA button
+            setInterval(() => {
+                anime({
+                    targets: '.cta-button',
+                    scale: [1, 1.05, 1],
+                    duration: 2000,
+                    easing: 'easeInOutQuad'
+                });
+            }, 5000);
+
+            // Add stagger animation to tech tags
+            document.querySelectorAll('.project-tech').forEach(techContainer => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            anime({
+                                targets: entry.target.querySelectorAll('.tech-tag'),
+                                scale: [0, 1],
+                                opacity: [0, 1],
+                                duration: 600,
+                                delay: anime.stagger(100),
+                                easing: 'easeOutBack'
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+                
+                observer.observe(techContainer);
+            });
+
+            // Add wave animation to section titles
+            document.querySelectorAll('.section-title').forEach(title => {
+                title.addEventListener('mouseenter', function() {
+                    anime({
+                        targets: this,
+                        rotateX: [0, 360],
+                        duration: 1000,
+                        easing: 'easeInOutQuad'
+                    });
+                });
+            });
+        });
+
+        // Add custom cursor effect
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor-trail';
+            cursor.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: linear-gradient(45deg, #00d4ff, #5b73ff);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                opacity: 0.7;
+            `;
+            
+            document.body.appendChild(cursor);
+            
+            anime({
+                targets: cursor,
+                scale: [0, 1, 0],
+                opacity: [0.7, 0],
+                duration: 1000,
+                easing: 'easeOutQuad',
+                complete: () => cursor.remove()
+            });
+        });
+    </script>
+</body>
+</html>
